@@ -20,15 +20,10 @@ const Login = () => {
     <div className="login">
       <h1>Login</h1>
       <form onSubmit={submitHandler} className="form">
-        <input
-          type="email"
-          placeholder="Enter Email ID "
-          ref={emailRef}
-          required
-        />
+        <input type="email" placeholder="Email ID " ref={emailRef} required />
         <input
           type="password"
-          placeholder="Enter Password "
+          placeholder="Password "
           ref={passwordRef}
           required
         />
