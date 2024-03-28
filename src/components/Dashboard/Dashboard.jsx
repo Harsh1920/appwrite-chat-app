@@ -1,6 +1,7 @@
 import React from "react";
 import "./Dashboard.css";
 import ChatItem from "../ChatItem/ChatItem";
+import Message from "../Message/Message";
 
 const Dashboard = () => {
   return (
@@ -13,6 +14,7 @@ const Dashboard = () => {
         </div>
         <div className="dashboard__right">
           <div>Right</div>
+          <Message/>
         </div>
       </div>
     </>
