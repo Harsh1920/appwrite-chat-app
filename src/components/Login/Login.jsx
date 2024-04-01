@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./Login.css";
+import { ID, account } from "../../lib/appwrite";
 
 const Login = () => {
   const emailRef = useRef();
@@ -10,6 +11,7 @@ const Login = () => {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     console.log("Email ID:", email, "Password:", password);
+    // Login user
   };
 
   useEffect(() => {
@@ -23,7 +25,7 @@ const Login = () => {
         <input type="email" placeholder="Email ID " ref={emailRef} required />
         <input
           type="password"
-          placeholder="Password "
+          placeholder="Password"
           ref={passwordRef}
           required
         />
