@@ -13,9 +13,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="dashboard__right">
-          <div>Right</div>
-          <Message  uid="mine"/>
-          <Message  uid="friend"/>
+          <Message/>
         </div>
       </div>
     </>
