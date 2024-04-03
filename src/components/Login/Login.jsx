@@ -19,7 +19,7 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="login">
+    <div className="form__outer">
       <h1>Login</h1>
       <form onSubmit={submitHandler} className="form">
         <input type="email" placeholder="Email ID " ref={emailRef} required />
@@ -29,7 +29,7 @@ const Login = () => {
           ref={passwordRef}
           required
         />
-        <button type="submit">Login</button>
+        <button className="btn" type="submit">Login</button>
       </form>
     </div>
   );

@@ -46,7 +46,7 @@ const Register = () => {
   }, []);
 
   return (
-    <div className="login">
+    <div className="form__outer">
       <h1>Register</h1>
       <form onSubmit={submitHandler} className="form">
         <input type="text" placeholder="Name" ref={nameRef} required />
@@ -57,7 +57,7 @@ const Register = () => {
           ref={passwordRef}
           required
         />
-        <button type="submit">Register</button>
+        <button className="btn" type="submit">Register</button>
       </form>
     </div>
   );

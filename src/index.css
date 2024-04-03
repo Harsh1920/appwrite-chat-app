@@ -126,3 +126,16 @@ button:focus-visible {
   align-items: center;
   justify-content: end;
 }
+
+.btn{
+  background-color: cornflowerblue;
+  color: white;
+}
+
+.form__outer{
+  height: 100vh;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
