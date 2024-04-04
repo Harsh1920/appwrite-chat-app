@@ -73,6 +73,12 @@ const Register = () => {
           required
         />
         <button className="btn" type="submit">Register</button>
+        <div className="form__already_regi_login_outer">
+          <div className="form__already_regi_login_inner">
+           <p>Alread hava an account?</p>
+            <p className="form__highlight">Login</p>
+          </div>
+        </div>
       </form>
     </div>
   );
