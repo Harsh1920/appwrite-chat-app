@@ -1,17 +1,24 @@
 import React, { useEffect, useRef } from "react";
 import "./Login.css";
-import { ID, account } from "../../lib/appwrite";
+import { useNavigate } from "react-router";
+import { account } from "../../lib/appwrite";
 
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const navigate = useNavigate();
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     console.log("Email ID:", email, "Password:", password);
-    // Login user
+    try {
+      await account.createEmailSession(email, password);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -29,11 +36,12 @@ const Login = () => {
           ref={passwordRef}
           required
         />
-        <button className="btn" type="submit">Login</button>
+        <button className="btn" type="submit">
+          Login
+        </button>
         <div>
           <p>Not hava an account? Register.</p>
         </div>
-        
       </form>
     </div>
   );
