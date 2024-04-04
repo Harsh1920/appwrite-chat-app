@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import "./Register.css";
-import { ID, account } from "../../lib/appwrite";
+import { ID, account, databases } from "../../lib/appwrite";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -29,6 +29,7 @@ const Register = () => {
   const createUser = async (eml, psw, name) => {
     try {
       await account.create(ID.unique(), eml, psw, name);
+      await insertUserDB(eml, name);
       userLoginSession(eml, psw);
     } catch (error) {
       throw new Error(error);
@@ -40,6 +41,20 @@ const Register = () => {
     console.log(await account.get());
     navigate("/dashboard", { replace: true });
   }
+
+  const insertUserDB = async (email, name) => {
+    try {
+      const result = await databases.createDocument(
+        "660c34d27dde81eeac4c",
+        "660c350aec53973fc11d",
+        ID.unique(),
+        { user_name: name, user_email: email }
+      );
+      console.log(result);
+    } catch (error) {
+      console.error("Error inserting user into DB", error);
+    }
+  };
 
   useEffect(() => {
     nameRef.current.focus();
