@@ -3,32 +3,24 @@ import "./Message.css";
 function Message({ uid }) {
   console.log("uid: ",uid);
     return (
-      <>
-      <div className='msg-section'>
-          {/* msg by friend */}
-          
-          {/* msg by me */}
-          { uid === "mine" ? <div className='my-msg'>
-            <p>My Messages</p>
-            </div>:
-            <div className='friend-msg'>
-              <p>Friend Messages</p>
-          </div>
-          }
-     </div>
-    </>
-      
-  //   <div class="message">
-  //   <div class="message__outer">
-  //     <div class="message__avatar"></div>
-  //     <div class="message__inner">
-  //       <div class="message__bubble"></div>
-  //       <div class="message__actions"></div>
-  //       <div class="message__spacer"></div>
-  //     </div>
-  //     {/* <div class="message__status"></div> */}
-  //   </div>
-  // </div>
+      <div class="chat-frame">
+      <div class="msg-display-area">
+        <div>
+          <div class="chat-bubble">We are learning CSS right now!</div>
+        </div>
+
+        <div class="chat-bubble">
+          Laxy is React Native Developer. Laxy is earning nice amount of
+          money. So he wants donate all his wealth to Harsh. And Laxy is
+          planning two child as well with second wife.
+        </div>
+        <div class="chat-bubble">Harsh is learning programming.</div>
+      </div>
+      <div class="msg-send-area">
+        <input type="text" placeholder="Enter Message..." autofocus />
+        <button type="button">Send</button>
+      </div>
+    </div>
   )
 }
 
