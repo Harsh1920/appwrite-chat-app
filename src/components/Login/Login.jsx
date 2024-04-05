@@ -1,11 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import "./Login.css";
 import { ID, account } from "../../lib/appwrite";
+import { Navigate, useNavigate } from "react-router";
 
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-
+  const navigate = useNavigate()
   const submitHandler = (e) => {
     e.preventDefault();
     const email = emailRef.current.value;
@@ -30,9 +31,14 @@ const Login = () => {
           required
         />
         <button className="btn" type="submit">Login</button>
-        <div>
-          <p>Not hava an account? Register.</p>
-        </div>
+        <div className="form__already_regi_login_outer">
+          <div className="form__already_regi_login_inner">
+          <p>Not have an account?</p>
+            <p className="form__highlight" onClick={() => {
+              navigate("/")
+          }}>Register</p>
+          </div>
+          </div>
         
       </form>
     </div>
