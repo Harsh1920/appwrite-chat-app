@@ -13,10 +13,11 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="dashboard__right">
-          <div className="msg__outer">
-            
-            <p>Hi</p>
+          
+          <div className="msg__selectMsgHint_outer">
+            <h3 className="msg__selectMsgHint_txt">Choose a friend to initiate a chat with.</h3>
           </div>
+          
           {/* <Message/> */}
         </div>
       </div>
