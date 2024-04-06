@@ -13,7 +13,11 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="dashboard__right">
-          <Message/>
+          <div className="msg__outer">
+            
+            <p>Hi</p>
+          </div>
+          {/* <Message/> */}
         </div>
       </div>
     </>

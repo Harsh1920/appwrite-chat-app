@@ -17,3 +17,11 @@
   flex: 0.7;
   background-color: #333333;
 }
+
+.msg__outer{  
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  
+  
+}

@@ -77,8 +77,15 @@ const Register = () => {
         </button>
         <div className="form__already_regi_login_outer">
           <div className="form__already_regi_login_inner">
-            <p>Alread hava an account?</p>
-            <p className="form__highlight">Login</p>
+            <p>Alread have an account?</p>
+            <p
+              className="form__highlight"
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Login
+            </p>
           </div>
         </div>
       </form>
