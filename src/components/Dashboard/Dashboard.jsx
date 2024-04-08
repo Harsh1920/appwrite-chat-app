@@ -14,11 +14,11 @@ const Dashboard = () => {
         </div>
         <div className="dashboard__right">
           
-          <div className="msg__selectMsgHint_outer">
+          {/* <div className="msg__selectMsgHint_outer">
             <h3 className="msg__selectMsgHint_txt">Choose a friend to initiate a chat with.</h3>
-          </div>
+          </div> */}
           
-          {/* <Message/> */}
+          <Message/>
         </div>
       </div>
     </>

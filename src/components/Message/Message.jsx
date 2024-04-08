@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Message.css";
+import { databases } from "../../lib/appwrite";
 function Message({ uid }) {
+  const msgRef= useRef(null);
+
+  const onSend = () =>{
+    // send data to collection 
+    const msg = msgRef.current.value;
+    console.log("msg: ",msg)
+    // databases.
+  }
+
   console.log("uid: ", uid);
   return (
     <div className="chat-frame">
@@ -17,8 +27,8 @@ function Message({ uid }) {
         <div className="chat-bubble">Harsh is learning programming.</div>
       </div>
       <div className="msg-send-area">
-        <input type="text" placeholder="Enter Message..." autoFocus />
-        <button type="button">Send</button>
+        <input ref={msgRef} type="text" placeholder="Enter Message..." autoFocus />
+        <button onClick={onSend} type="button">Send</button>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
+        {/* <Header /> */}
         <Routes>
           <Route path="/" element={<Register />} />
           <Route path="/login" element={<Login />} />
