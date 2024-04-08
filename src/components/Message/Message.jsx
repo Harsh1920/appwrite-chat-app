@@ -1,15 +1,28 @@
 import React, { useRef } from "react";
 import "./Message.css";
-import { databases } from "../../lib/appwrite";
-function Message({ uid }) {
-  const msgRef= useRef(null);
+import { ID, account, databases } from "../../lib/appwrite";
 
-  const onSend = () =>{
-    // send data to collection 
+function Message({ uid }) {
+  const msgRef = useRef(null);
+
+  const onSend = async () => {
+    // send data to collection
     const msg = msgRef.current.value;
-    console.log("msg: ",msg)
+    console.log("msg: ", msg);
     // databases.
-  }
+
+    try {
+      const result = await databases.createDocument(
+        "660c34d27dde81eeac4c",
+        "660ed72fd87cd8131f51",
+        ID.unique(),
+        { message: msg, sender: "", receiver: "" }
+      );
+      console.log(result);
+    } catch (error) {
+      console.error("Error inserting data into DB", error);
+    }
+  };
 
   console.log("uid: ", uid);
   return (
@@ -27,8 +40,15 @@ function Message({ uid }) {
         <div className="chat-bubble">Harsh is learning programming.</div>
       </div>
       <div className="msg-send-area">
-        <input ref={msgRef} type="text" placeholder="Enter Message..." autoFocus />
-        <button onClick={onSend} type="button">Send</button>
+        <input
+          ref={msgRef}
+          type="text"
+          placeholder="Enter Message..."
+          autoFocus
+        />
+        <button onClick={onSend} type="button">
+          Send
+        </button>
       </div>
     </div>
   );
