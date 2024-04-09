@@ -7,11 +7,20 @@
   cursor: pointer;
 }
 .header__icon{
+  width: 25px;
+  height: 25px;  
+  cursor: pointer;
+  padding: 1rem;
 
+}
+.header__icon_active{
+
+  background-color: #111;   
+  border-radius: 10px;
 }
 .header__icons_outer{
   display: flex;
   flex-direction: column;
-  
+  gap: 10px;      
 }
 
