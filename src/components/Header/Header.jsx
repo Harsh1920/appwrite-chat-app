@@ -10,8 +10,11 @@ const Header = () => {
 
   const logoutHandler = async () => {
    if (confirm("Are you sure want to logout?")) {
-    await account.deleteSession("current");
-    // alert("Logout successfully");
+    try {
+      await account.deleteSession("current");     
+    } catch (error) {
+      alert(error)
+    }     
     navigate("/login");
    }
     
@@ -24,11 +27,8 @@ const Header = () => {
         <FaRocketchat className="header__icon header__icon_active" />
         
         <FaSignOutAlt className="header__icon" onClick={logoutHandler}/>
-        {/* <div className="header__logout" onClick={logoutHandler}>        
-          <Logout />
-        </div> */}
-        </div>
-      
+        
+        </div>      
     </div>
   );
 };
