@@ -2,9 +2,8 @@ import React from "react";
 import "./Header.css";
 import { useNavigate } from "react-router";
 import { account } from "../../lib/appwrite";
-import  logout  from "../../assets/logout.jsx";
-import Logout from "../../assets/logout.jsx";
-import { FaRocketchat,FaSignOutAlt } from "react-icons/fa";
+import { FaRocketchat, FaSignOutAlt } from "react-icons/fa";
+
 const Header = () => {
   const navigate = useNavigate();
 
@@ -28,7 +27,7 @@ const Header = () => {
         
         <FaSignOutAlt className="header__icon" onClick={logoutHandler}/>
         
-        </div>      
+      </div>      
     </div>
   );
 };

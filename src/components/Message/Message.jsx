@@ -4,7 +4,7 @@ import { ID, account, databases } from "../../lib/appwrite";
 
 function Message({ uid }) {
   const msgRef = useRef(null);
-
+  
   const onSend = async () => {
     // send data to collection
     const msg = msgRef.current.value;
@@ -19,6 +19,7 @@ function Message({ uid }) {
         { message: msg, sender: "", receiver: "" }
       );
       console.log(result);
+      msgRef.current.value = null;
     } catch (error) {
       console.error("Error inserting data into DB", error);
     }
@@ -27,18 +28,16 @@ function Message({ uid }) {
   console.log("uid: ", uid);
   return (
     <div className="chat-frame">
-      <div className="msg-display-area">
-        <div>
-          <div className="chat-bubble">We are learning CSS right now!</div>
-        </div>
-
+      <div className="msg-display-area">        
+        <div className="chat-bubble">We are learning CSS right now!</div>      
         <div className="chat-bubble">
           Laxy is React Native Developer. Laxy is earning nice amount of money.
           So he wants donate all his wealth to Harsh. And Laxy is planning two
           child as well with second wife.
         </div>
-        <div className="chat-bubble">Harsh is learning programming.</div>
+        <div className="chat-bubble">Harsh is learning programming.</div>        
       </div>
+      
       <div className="msg-send-area">
         <input
           ref={msgRef}
