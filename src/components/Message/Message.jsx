@@ -1,22 +1,46 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Message.css";
 import { ID, account, databases } from "../../lib/appwrite";
 
-function Message({ uid }) {
+const DATABASE_ID = "660c34d27dde81eeac4c";
+const COLLECTION_ID = "660ed72fd87cd8131f51";
+
+function Message({ uid, selectedID }) {
+  const [chat, setChat] = useState([]);
+
   const msgRef = useRef(null);
-  
+
+  const fetchChat = () => {
+    let promise = databases.listDocuments(DATABASE_ID, COLLECTION_ID);
+
+    promise.then(
+      function (response) {
+        console.log("Chat List:", response);
+        const chatList = response.documents;
+        setChat(chatList);
+      },
+      function (error) {
+        console.log(error);
+      }
+    );
+  };
+
+  useEffect(() => {
+    fetchChat();
+  }, []);
+
   const onSend = async () => {
     // send data to collection
     const msg = msgRef.current.value;
     console.log("msg: ", msg);
-    // databases.
+    const myInfo = await account.get();
 
     try {
       const result = await databases.createDocument(
         "660c34d27dde81eeac4c",
         "660ed72fd87cd8131f51",
         ID.unique(),
-        { message: msg, sender: "", receiver: "" }
+        { message: msg, sender: myInfo.$id, receiver: selectedID }
       );
       console.log(result);
       msgRef.current.value = null;
@@ -28,16 +52,16 @@ function Message({ uid }) {
   console.log("uid: ", uid);
   return (
     <div className="chat-frame">
-      <div className="msg-display-area">        
-        <div className="chat-bubble">We are learning CSS right now!</div>      
-        <div className="chat-bubble">
-          Laxy is React Native Developer. Laxy is earning nice amount of money.
-          So he wants donate all his wealth to Harsh. And Laxy is planning two
-          child as well with second wife.
-        </div>
-        <div className="chat-bubble">Harsh is learning programming.</div>        
+      <div className="msg-display-area">
+        {chat.map((item, index) => {
+          return (
+            <div className="chat-bubble" key={item.$id}>
+              {item.message}
+            </div>
+          );
+        })}
       </div>
-      
+
       <div className="msg-send-area">
         <input
           ref={msgRef}

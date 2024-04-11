@@ -1,27 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Dashboard.css";
 import ChatItem from "../ChatItem/ChatItem";
 import Message from "../Message/Message";
 import Header from "../Header/Header";
 
 const Dashboard = () => {
+  const [selectedID, setselectedID] = useState(null);
+
   return (
     <>
-      
       <div className="dashboard">
-      <Header />
+        <Header />
         <div className="dashboard__left">
           <div>
-            <ChatItem />
+            <ChatItem setselectedID={setselectedID} />
           </div>
         </div>
         <div className="dashboard__right">
-          
           {/* <div className="msg__selectMsgHint_outer">
-            <h3 className="msg__selectMsgHint_txt">Choose a friend to initiate a chat with.</h3>
+            <h3 className="msg__selectMsgHint_txt">
+              Choose a friend to initiate a chat with.
+            </h3>
           </div> */}
-          
-          <Message/>
+
+          <Message selectedID={selectedID} />
         </div>
       </div>
     </>
