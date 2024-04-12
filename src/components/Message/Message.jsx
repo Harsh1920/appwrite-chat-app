@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Message.css";
 import { ID, account, databases } from "../../lib/appwrite";
+import { AiOutlineSend} from "react-icons/ai";
 
 const DATABASE_ID = "660c34d27dde81eeac4c";
 const COLLECTION_ID = "660ed72fd87cd8131f51";
@@ -69,9 +70,12 @@ function Message({ uid, selectedID }) {
           placeholder="Enter Message..."
           autoFocus
         />
-        <button onClick={onSend} type="button">
+        <div className="msg__send_btn_outer">
+          <AiOutlineSend size="22px" className="msg__send_btn_inner" />
+        </div>
+        {/* <button onClick={onSend} type="button">
           Send
-        </button>
+        </button> */}
       </div>
     </div>
   );
