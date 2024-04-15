@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import icon from "../../assets/react.svg";
-import { ID, account, databases } from "../../lib/appwrite";
+import { databases } from "../../lib/appwrite";
 import "./ChatItem.css";
+import { AiOutlineUser} from "react-icons/ai";
 
 const DATABASE_ID = "660c34d27dde81eeac4c";
 const COLLECTION_ID = "660c350aec53973fc11d";
@@ -34,7 +34,7 @@ const ChatItem = ({ setselectedID }) => {
 
   return (
     <>
-      {userList.map((user) => {
+      {userList.map((user,index) => {
         return (
           <div
             onClick={() => {
@@ -44,8 +44,8 @@ const ChatItem = ({ setselectedID }) => {
             className="chat-card"
             key={user.$id}
           >
-            <img src={icon} alt="Person Avtar" />
-            <h5>{user.user_name}</h5>
+            <AiOutlineUser size="26px" color={index === 1&& "white"}/>
+            <h5 className={index===1 && "chat-card_active"}>{user.user_name}</h5>
           </div>
         );
       })}

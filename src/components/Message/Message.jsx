@@ -73,9 +73,7 @@ function Message({ uid, selectedID }) {
         <div className="msg__send_btn_outer">
           <AiOutlineSend size="22px" className="msg__send_btn_inner" />
         </div>
-        {/* <button onClick={onSend} type="button">
-          Send
-        </button> */}
+       
       </div>
     </div>
   );

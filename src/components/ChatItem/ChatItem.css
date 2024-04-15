@@ -10,8 +10,13 @@
   align-items: center;
   cursor: pointer;
 }
+.chat-card_active{
+  color: white;
+  background-color: #111;
 
+}
 .chat-card h5 {
   padding: 0 0 0 20px;
   font-size: 1.1rem;
 }
+
