@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import { databases } from "../../lib/appwrite";
 import "./ChatItem.css";
 import { AiOutlineUser} from "react-icons/ai";
+import { Query } from "appwrite";
 
 const DATABASE_ID = "660c34d27dde81eeac4c";
 const COLLECTION_ID = "660c350aec53973fc11d";
 
-const ChatItem = ({ setselectedID }) => {
+const ChatItem = ({ setselectedID,selectedID }) => {
   const [userList, setUserList] = useState([]);
-
+  
   const fetchUserList = () => {
-    let userPromise = databases.listDocuments(DATABASE_ID, COLLECTION_ID);
+    let userPromise = databases.listDocuments(DATABASE_ID, COLLECTION_ID, [
+      
+    ]);
     userPromise.then(
       function (response) {
         console.log("User List:", response);
@@ -40,12 +43,13 @@ const ChatItem = ({ setselectedID }) => {
             onClick={() => {
               console.log(user.$id);
               setselectedID(user.$id);
+
             }}
             className="chat-card"
             key={user.$id}
           >
-            <AiOutlineUser size="26px" color={index === 1&& "white"}/>
-            <h5 className={index===1 && "chat-card_active"}>{user.user_name}</h5>
+            <AiOutlineUser size="26px" color={user.$id === selectedID && "white"}/>
+            <h5 className={user.$id === selectedID && "chat-card_active"}>{user.user_name}</h5>
           </div>
         );
       })}

@@ -13,17 +13,19 @@ const Dashboard = () => {
         <Header />
         <div className="dashboard__left">
           <div>
-            <ChatItem setselectedID={setselectedID} />
+            <ChatItem setselectedID={setselectedID} selectedID={selectedID} />
           </div>
         </div>
         <div className="dashboard__right">
-          {/* <div className="msg__selectMsgHint_outer">
+          {
+            selectedID ? <Message selectedID={selectedID} /> :
+            <div className="msg__selectMsgHint_outer">
             <h3 className="msg__selectMsgHint_txt">
               Choose a friend to initiate a chat with.
             </h3>
-          </div> */}
-
-          <Message selectedID={selectedID} />
+          </div>              
+        }  
+          
         </div>
       </div>
     </>
