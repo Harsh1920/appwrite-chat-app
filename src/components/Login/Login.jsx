@@ -13,7 +13,7 @@ const Login = () => {
     const password = passwordRef.current.value;
     console.log("Email ID:", email, "Password:", password);
     try {
-      await account.createEmailSession(email, password);
+      await account.createEmailPasswordSession(email, password);
       navigate("/dashboard");
     } catch (error) {
       console.error(error);

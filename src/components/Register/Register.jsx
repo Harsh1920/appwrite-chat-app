@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import "./Register.css";
 import { ID, account, databases } from "../../lib/appwrite";
 import { useNavigate } from "react-router-dom";
+import { COLLECTION_USER_LIST_ID, DATABSE_ID } from "../../utils/constant";
 
 const Register = () => {
   let navigate = useNavigate();
@@ -29,28 +30,33 @@ const Register = () => {
   const createUser = async (eml, psw, name) => {
     try {
       await account.create(ID.unique(), eml, psw, name);
-      await insertUserDB(eml, name);
-      userLoginSession(eml, psw);
+      userLoginSession(eml,psw,name)
+      
     } catch (error) {
+      alert(error)
       throw new Error(error);
     }
   };
 
-  async function userLoginSession(email, password) {
+  async function userLoginSession(email, password,name) {
     await account.createEmailSession(email, password);
     console.log(await account.get());
-    navigate("/dashboard", { replace: true });
+    const userData = await account.get();
+    console.log("userData: ",userData);
+    insertUserDB(email,userData,name)
+    
   }
 
-  const insertUserDB = async (email, name) => {
+  const insertUserDB = async (email, userData,name) => {
     try {
       const result = await databases.createDocument(
-        "660c34d27dde81eeac4c",
-        "660c350aec53973fc11d",
+        DATABSE_ID,
+        COLLECTION_USER_LIST_ID,
         ID.unique(),
-        { user_name: name, user_email: email }
+        { user_name: name, user_email: email,uid:userData?.$id }
       );
       console.log(result);
+      navigate("/dashboard", { replace: true });
     } catch (error) {
       console.error("Error inserting user into DB", error);
     }

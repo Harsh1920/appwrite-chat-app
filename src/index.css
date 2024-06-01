@@ -85,7 +85,15 @@ button:focus-visible {
   flex-direction: column;
   gap: 8px;
   padding: 8px;
+  
 }
+
+
+.parent-chat-bubble {
+ justify-content: end;
+ display: flex;   
+}
+
 .msg-send-area {
   flex: 0.04;
   display: flex;
@@ -133,7 +141,7 @@ button:focus-visible {
   border-radius: 1rem;
   display: flex;
   align-items: center;
-  justify-content: end;
+  
 }
 
 .btn{
