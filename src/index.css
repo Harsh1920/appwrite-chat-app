@@ -76,6 +76,7 @@ button:focus-visible {
   flex-direction: column;
   height: 100vh;
   width: 100%;
+  flex: 1;
 }
 
 .msg-display-area {
@@ -85,7 +86,7 @@ button:focus-visible {
   flex-direction: column;
   gap: 8px;
   padding: 8px;
-  
+  overflow: auto;
 }
 
 
